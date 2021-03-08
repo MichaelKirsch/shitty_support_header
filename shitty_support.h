@@ -3,11 +3,13 @@
 #include <thread>
 #include <iostream>
 #include <vector>
+#include <map>
 
 namespace ShittySupportLib{
     //simple clock
 
     class SimpleClock{
+    public:
         SimpleClock(){
             time_point = std::chrono::steady_clock::now();
             start_time = time_point;
@@ -56,9 +58,40 @@ namespace ShittySupportLib{
     }
 
 
-    //Simple Statemaschine
-    namespace CrudeStateMaschine{
+    //tiny Scheduler
+    namespace TinyScheduler{
+        class Task{
+        public:
+            Task(int millis_update_rate) : m_updaterate_millis(millis_update_rate) {  };
+            virtual std::chrono::milliseconds update()=0; //returns the millis count when next update is needed;
+            virtual void init(){};
+            virtual void end(){};
 
+            bool done= false; //can be set by the task to get out of the scheduler
+
+        private:
+            const int m_updaterate_millis;
+        };
+
+
+        class Taskmanager {
+        public:
+
+
+            void update(){
 
             }
+
+            void attach_task(Task& to_attach){
+                m_tasks.push_back(&to_attach);
+                to_attach.init();
+            };
+
+
+        private:
+            void go_to_sleep(double millis){};
+            std::multimap<Task*,double> m_scheduler_list;
+            std::vector<Task*> m_tasks;
+        };
+    }
 }
