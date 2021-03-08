@@ -14,22 +14,22 @@ namespace ShittySupportLib{
             start_time = time_point;
         }
 
-        std::chrono::milliseconds get_duration_since_start(){
+        std::chrono::milliseconds get_duration(){
             return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now()-start_time);
         }
 
-        long long get_duration_since_start_long(){
-            return get_duration_since_start().count();
+        long long get_duration_long(){
+            return get_duration().count();
         }
 
-        std::chrono::milliseconds elapsed_millis(){
+        std::chrono::milliseconds tick(){
             auto old = time_point;
             time_point = std::chrono::steady_clock::now();
             return std::chrono::duration_cast<std::chrono::milliseconds>(time_point-old);
         }
 
-        int elapsed_millis_int(){
-            return elapsed_millis().count();
+        int tick_int(){
+            return tick().count();
         }
 
 
