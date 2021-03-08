@@ -102,10 +102,9 @@ namespace ShittySupportLib{
 
         void print_log(){
             int counter =0;
-            std::cout << "**********Logged Values***********" <<std::endl;
-            int max = m_log.size();
+            std::cout << "**********"<< m_log.size() <<" Logged Values***********" <<std::endl;
             for(auto& x:m_log){
-                std::cout << counter << ":" << max << "|" << x.first<<"|" << x.second<<"\n";
+                std::cout << counter << "|" << x.first<<"|" << x.second<<"\n";
                 counter++;
             }
             std::cout << std::endl;
@@ -113,10 +112,9 @@ namespace ShittySupportLib{
 
         void print_debug(){
             int counter =0;
-            std::cout << "**********Debugged Values***********" <<std::endl;
-            int max = m_debugged_values.size();
+            std::cout << "**********"<< m_debugged_values.size() <<" Debugged Values***********" <<std::endl;
             for(auto& x:m_debugged_values){
-                std::cout << counter << ":" << max << "|" << x.first<<"|" << x.second<<"\n";
+                std::cout << counter  << "|" << x.first<<"|" << x.second<<"\n";
                 counter++;
             }
             std::cout << std::endl;
