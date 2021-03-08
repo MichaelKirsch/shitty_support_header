@@ -6,7 +6,7 @@
 #include <map>
 
 namespace ShittySupportLib{
-    //simple clock
+    //simple clock for timing
 
     class SimpleClock{
     public:
