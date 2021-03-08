@@ -2,7 +2,10 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
+#include <utility>
 #include <vector>
+#include <map>
+#include <queue>
 
 namespace ShittySupportLib{
     //simple clock
@@ -57,9 +60,76 @@ namespace ShittySupportLib{
     }
 
 
-    //Simple Statemaschine
-    namespace CrudeStateMaschine{
+    //Debugger
+    class Debugger
+    {
+    public:
+        static Debugger& instance()
+        {
+            static Debugger _instance;
+            return _instance;
+        }
+        ~Debugger() {}
+        void log(std::string name, std::string message){
+            m_log.emplace_back(name,message);
+        };
 
-
+        void set_max_log_size(int new_size){
+            if(new_size<m_max_log_size)
+            {
+                m_log.pop_front();
             }
+            m_max_log_size = new_size;
+        }
+
+        void debug(std::string name,std::string data){
+            if(m_debugged_values.find(name)==m_debugged_values.end()){
+                m_debugged_values.insert(std::make_pair(name,data));
+            } else
+            {
+                m_debugged_values.at(name) = std::move(data);
+            }
+        }
+
+        void clear_debug(){
+            m_debugged_values.clear();
+        }
+
+        void clear_log(){
+            while (!m_log.empty())
+                m_log.pop_front();
+        }
+
+        void print_log(){
+            int counter =0;
+            std::cout << "**********Logged Values***********" <<std::endl;
+            int max = m_log.size();
+            for(auto& x:m_log){
+                std::cout << counter << ":" << max << "|" << x.first<<"|" << x.second<<"\n";
+                counter++;
+            }
+            std::cout << std::endl;
+        }
+
+        void print_debug(){
+            int counter =0;
+            std::cout << "**********Debugged Values***********" <<std::endl;
+            int max = m_debugged_values.size();
+            for(auto& x:m_debugged_values){
+                std::cout << counter << ":" << max << "|" << x.first<<"|" << x.second<<"\n";
+                counter++;
+            }
+            std::cout << std::endl;
+        };
+
+    private:
+        Debugger() {
+
+        }
+        Debugger(const Debugger& );
+        Debugger & operator = (const Debugger &);
+        int m_max_log_size=50;
+        std::deque<std::pair<std::string,std::string>> m_log;
+        std::map<std::string,std::string> m_debugged_values;
+    };
 }
