@@ -60,7 +60,7 @@ namespace ShittySupportLib{
     }
 
 
-    //Debugger
+    //Debugger and logger
     class Debugger
     {
     public:
