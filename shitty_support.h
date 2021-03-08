@@ -8,6 +8,7 @@ namespace ShittySupportLib{
     //simple clock
 
     class SimpleClock{
+    public:
         SimpleClock(){
             time_point = std::chrono::steady_clock::now();
             start_time = time_point;
