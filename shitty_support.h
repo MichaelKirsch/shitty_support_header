@@ -85,7 +85,6 @@ namespace ShittySupportLib {
                 m_log.emplace_back(name, "Fail");
         }
 
-        };
 
 
         void set_max_log_size(int new_size) {
@@ -145,12 +144,7 @@ namespace ShittySupportLib {
         std::deque<std::pair<std::string, std::string>> m_log;
         std::map<std::string, std::string> m_debugged_values;
     };
-
-    namespace TaskManager {
-
-
-
-}
+};
 
 
 
