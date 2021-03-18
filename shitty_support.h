@@ -85,7 +85,12 @@ namespace ShittySupportLib {
                 m_log.emplace_back(name, "Fail");
         }
 
-
+        void log(std::string name, bool shrt) {
+            if(shrt)
+                m_log.emplace_back(name, "Success");
+            else
+                m_log.emplace_back(name, "Fail");
+        }
 
         void set_max_log_size(int new_size) {
             if (new_size < m_max_log_size) {
