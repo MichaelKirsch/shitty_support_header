@@ -65,7 +65,7 @@ namespace ShittySupportLib {
     class Debugger {
     public:
         enum Short{
-            SUCCESS,FAIL
+            FAIL,SUCCESS
         };
         static Debugger &instance() {
             static Debugger _instance;
