@@ -8,6 +8,9 @@
 #include <map>
 #include <queue>
 
+#define LDebug Debugger::instance()
+
+
 namespace ShittySupportLib {
     //simple clock
 
