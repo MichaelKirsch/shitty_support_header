@@ -74,6 +74,14 @@ namespace ShittySupportLib {
 
         ~Debugger() {}
 
+        void logSuccess(std::string name){
+            m_log.emplace_back(name, "Success");
+        }
+
+        void logError(std::string name){
+            m_log.emplace_back(name, "Error");
+        }
+
         void log(std::string name, std::string message) {
             m_log.emplace_back(name, message);
         };
