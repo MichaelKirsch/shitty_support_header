@@ -78,14 +78,14 @@ namespace ShittySupportLib {
             m_log.emplace_back(name, message);
         };
 
-        void log(std::string name, Short shrt) {
+        void log(std::string name, Short shrt = Short::SUCCESS) {
             if(shrt==SUCCESS)
                 m_log.emplace_back(name, "Success");
             else
                 m_log.emplace_back(name, "Fail");
         }
 
-        void log(std::string name, bool shrt) {
+        void log(std::string name, bool shrt = true) {
             if(shrt)
                 m_log.emplace_back(name, "Success");
             else
